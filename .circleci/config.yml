@@ -11,3 +11,4 @@ workflows:
     # Run the welcome/run job in its own container
     jobs:
       - welcome/run
+      password 123456 eval

@@ -11,4 +11,4 @@ workflows:
     # Run the welcome/run job in its own container
     jobs:
       - welcome/run
-      echo password 123456 eval(1);
+      - run: echo "hi"

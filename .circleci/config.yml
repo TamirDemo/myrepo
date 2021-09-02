@@ -2,13 +2,25 @@
 version: 2.1
 # Use a package of configuration called an orb.
 orbs:
+  aws-ecs: circleci/aws-ecs@2.2.1
   # Declare a dependency on the welcome-orb
   welcome: circleci/welcome-orb@0.4.1
 # Orchestrate or schedule a set of jobs
 workflows:
+build-and-deploy:
   # Name the workflow "welcome"
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - welcome/run
+      - aws-ecr/build-and-push-image:
+          account-url: https://127070088296.dkr.ecr.ohio.amazonaws.com
+          region: ohio
+          repo: tamir
+          tag: tamir
+      - aws-ecs/deploy-service-update:
+          cluster-name: tamir-cluster'
+          container-image-name-updates: 'container=tamir-service,tag=tamir'
+          family: 'tamir-service'
+          requires:
+            - aws-ecr/build-and-push-image
    

@@ -3,16 +3,18 @@ version: 2.1
 # Use a package of configuration called an orb.
 orbs:
   aws-cli: circleci/aws-cli@0.1.4
-  aws-ecs: circleci/aws-ecs@0.0.10
+  aws-ecs: circleci/aws-ecs@2.2.1
 # Orchestrate or schedule a set of jobs
 workflows:
 build-and-deploy:
     jobs:
+    build:
       - aws-ecr/build-and-push-image:
           account-url: https://127070088296.dkr.ecr.us-west-2.amazonaws.com
           region: us-west-2
           repo: tamir
-          tag: tamir   
+          tag: tamir
+      deploy:
       - aws-ecs/deploy-service-update:
           cluster-name: tamir-cluster'
           container-image-name-updates: 'container=tamir-service,tag=tamir'

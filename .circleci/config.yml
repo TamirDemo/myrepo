@@ -6,7 +6,7 @@ orbs:
   aws-ecs: circleci/aws-ecs@2.2.1
 # Orchestrate or schedule a set of jobs
 workflows:
-build-and-test:
+test_and_deploy:
 jobs:
  - aws-ecr/build-and-push-image:
           account-url: https://127070088296.dkr.ecr.us-west-2.amazonaws.com

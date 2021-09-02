@@ -8,9 +8,6 @@ orbs:
 # Orchestrate or schedule a set of jobs
 workflows:
 build-and-deploy:
-  # Name the workflow "welcome"
-  welcome:
-    # Run the welcome/run job in its own container
     jobs:
       - aws-ecr/build-and-push-image:
           account-url: https://127070088296.dkr.ecr.us-west-2.amazonaws.com

@@ -13,8 +13,7 @@ build-and-deploy:
           account-url: https://127070088296.dkr.ecr.us-west-2.amazonaws.com
           region: us-west-2
           repo: tamir
-          tag: tamir
-     deploy:     
+          tag: tamir   
       - aws-ecs/deploy-service-update:
           cluster-name: tamir-cluster'
           container-image-name-updates: 'container=tamir-service,tag=tamir'

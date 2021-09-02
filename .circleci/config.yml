@@ -6,7 +6,7 @@ orbs:
   aws-ecs: circleci/aws-ecs@2.2.1
 # Orchestrate or schedule a set of jobs
 workflows:
-build-and-deploy:
+build:
     jobs:
     build:
       - aws-ecr/build-and-push-image:
@@ -14,7 +14,6 @@ build-and-deploy:
           region: us-west-2
           repo: tamir
           tag: tamir
-      deploy:
       - aws-ecs/deploy-service-update:
           cluster-name: tamir-cluster'
           container-image-name-updates: 'container=tamir-service,tag=tamir'

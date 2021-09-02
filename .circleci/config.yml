@@ -13,8 +13,8 @@ build-and-deploy:
     # Run the welcome/run job in its own container
     jobs:
       - aws-ecr/build-and-push-image:
-          account-url: https://127070088296.dkr.ecr.ohio.amazonaws.com
-          region: ohio
+          account-url: https://127070088296.dkr.ecr.us-west-2.amazonaws.com
+          region: us-west-2
           repo: tamir
           tag: tamir
       - aws-ecs/deploy-service-update:

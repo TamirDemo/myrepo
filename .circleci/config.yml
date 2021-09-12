@@ -15,7 +15,7 @@ jobs:
       - run:
           name: aws role  
           command: |
-            CREDENTIALS="$(aws sts assume-role --role-arn $ROLE_ARN --role-session-name build-$CIRCLE_PROJECT_REPONAME-$CIRCLE_BUILD_NUM | jq '.Credentials')"
+            aws sts assume-role --role-arn arn:aws:iam::131125430978:role/xaccounts3access --role-session-name s3-access-example
       - run: cd ./app && npm install #&& npm run build
       - run: aws s3 sync ./app s3://tamir-ci-cd-demo
 

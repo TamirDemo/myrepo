@@ -14,8 +14,7 @@ jobs:
             sudo pip3 install awsebcli --upgrade;
       - run:
           name: aws role  
-          command: 
-          aws configure
+          command:
             aws sts assume-role --role-arn arn:aws:iam::131125430978:role/Administrators --role-session-name tamir
       - run: cd ./app && npm install #&& npm run build
       - run: aws s3 sync ./app s3://tamir-ci-cd-demo
